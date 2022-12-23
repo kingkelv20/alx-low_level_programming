@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -5,13 +6,12 @@
  * @n: input integer.
  * Return: no return.
  */
-void print_number(int n)
+void print_number(int n) 
 {
-	unsigned int m, d, count;
-
+	unsigned int m,d,count;
 	if (n < 0)
 	{
-		_putchar(45);
+		putchar(45);
 		m = n * -1;
 	}
 	else
@@ -28,8 +28,13 @@ void print_number(int n)
 		count *= 10;
 	}
 
-	for (; count >= 1; count /= 10)
+	while (count >= 1)
 	{
-		_putchar(((m / count) % 10) + 48);
+		int r = m/count;
+		putchar(r + '0');
+		m -= r * count;
+		count /= 10;
 	}
+
+	return;
 }
